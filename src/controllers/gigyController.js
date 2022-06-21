@@ -37,7 +37,7 @@ class gigyController {
   }
 
   static async getAllGigs(req, res) {
-    const allGigs = await Gig.find({});
+    const allGigs = await Gig.find({ status: "posted" });
     res.status(200).send(allGigs);
   }
 
@@ -63,7 +63,7 @@ class gigyController {
     const { id } = req.params;
     console.log(id);
     const { _id } = req.user;
-    const query = { _id: id };
+    const query = { _id: id, status: "posted" };
 
     console.log(query);
     console.log(_id);
@@ -107,7 +107,7 @@ class gigyController {
     const { id, userid } = req.params;
     try {
       const assignedGig = await Gig.findByIdAndUpdate(
-        { _id: id, owner: req.user._id },
+        { _id: id, owner: req.user._id, status: "posted" },
         {
           assignedTo: userid,
           status: "assigned",
@@ -127,7 +127,7 @@ class gigyController {
     try {
       console.log(_id);
       const startedGig = await Gig.findOneAndUpdate(
-        { _id: id, assignedTo: _id },
+        { _id: id, assignedTo: _id, status: "posted" },
         {
           status: "started",
         },
@@ -146,7 +146,7 @@ class gigyController {
     try {
       console.log(_id);
       const startedGig = await Gig.findOneAndUpdate(
-        { _id: id, owner: _id },
+        { _id: id, owner: _id, status: "posted" },
         {
           status: "completed",
         },
@@ -157,19 +157,6 @@ class gigyController {
       res.send({ response: "something went wrong" });
     }
   }
-
-  //   static async completeGig(req, res) {
-  //     const { id } = req.params;
-  //     const { userId } = req.user;
-  //     const completedGig = await Gig.findByIdAndUpdate(
-  //       id,
-  //       {
-  //         status: "completed",
-  //       },
-  //       { new: true }
-  //     );
-  //     res.status(200).send(completedGig);
-  //   }
 
   static async getGigsByStatus(req, res) {
     const { status } = req.params;
