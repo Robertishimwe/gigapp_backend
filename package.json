@@ -1,0 +1,42 @@
+{
+  "name": "gigapp_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/app.js",
+  "scripts": {
+    "build": "babel src -d dist --copy-files",
+    "start": "nodemon --exec babel-node src/app.js"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.12",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/register": "^7.16.9",
+    "@hapi/joi": "^15.0.3",
+    "@types/chai-http": "^4.2.0",
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
+    "better-npm-run": "^0.1.1",
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "cors": "^2.8.5",
+    "dotenv": "^14.3.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.2",
+    "joi-browser": "^13.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.8",
+    "nodemon": "^2.0.15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Robertishimwe/gigapp_backend.git"
+  },
+  "author": "ishimwe robert",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Robertishimwe/gigapp_backend/issues"
+  },
+  "homepage": "https://github.com/Robertishimwe/gigapp_backend#readme"
+}
